@@ -50,4 +50,13 @@ describe("Bank", () => {
     expect(bankAcc.balance).toBe(1000);
     expect(saveAcc.balance).toBe(550);
   });
+
+  it("Getting certain account transaction history", () => {
+    const result = bank.getAccountHistory(1);
+    expect(result.some((el) => el.type === "transfer-in")).toBe(true);
+
+    const result2 = bank.getAccountHistory(2);
+    expect(result2.some((el) => el.type === "interest")).toBe(true);
+    expect(result2.some((el) => el.type === "transfer-out")).toBe(true);
+  });
 });

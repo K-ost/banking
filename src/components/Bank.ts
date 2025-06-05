@@ -41,7 +41,7 @@ export class Bank {
     accTo.deposit(amount, "transfer-in");
   }
 
-  getAccountHistory(accountId: number, type?: TransactionType): string[] {
+  getAccountHistory(accountId: number, type?: TransactionType): Transaction[] {
     const account = this.#bills.get(accountId);
     if (!account) {
       throw new Error(Messages.noAccount);

@@ -49,17 +49,18 @@ export default class BankAccount {
     this.setTransaction(amount, this.#balance, type);
   }
 
-  getTransactionHistory(type?: TransactionType): string[] {
+  getTransactionHistory(type?: TransactionType): Transaction[] {
     let transactions = Array.from(this.#transactions.values());
 
     if (type) {
       transactions = transactions.filter((el) => el.type === type);
     }
 
-    return transactions.map((transaction) => {
-      return `Transaction: "${transaction.type}", Amount: ${
-        transaction.amount
-      }, Balance: ${transaction.balanceAfter} - ${transaction.timestamp.toUTCString()}`;
-    });
+    return transactions.map((transaction) => ({
+      amount: transaction.amount,
+      balanceAfter: transaction.balanceAfter,
+      timestamp: transaction.timestamp,
+      type: transaction.type,
+    }));
   }
 }
