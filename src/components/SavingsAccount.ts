@@ -35,14 +35,13 @@ export class CheckingAccount extends BankAccount {
 
     this.setBalance(this.balance - amount);
 
-    this.setTransaction(
-      amount,
-      this.balance,
+    const currentType =
       this.balance < 0 && type === "withdraw"
         ? "overdraft"
         : this.balance < 0 && type === "transfer-out"
         ? "transfer-out"
-        : "withdraw"
-    );
+        : "withdraw";
+
+    this.setTransaction(amount, this.balance, currentType);
   }
 }

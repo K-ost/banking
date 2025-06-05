@@ -1,15 +1,13 @@
 import { Messages } from "..";
 import { Transaction, TransactionType } from "../types";
 import BankAccount from "./BankAccount";
-import { CheckingAccount, SavingsAccount } from "./SavingsAccount";
-
-type CommonType = BankAccount | CheckingAccount | SavingsAccount;
+import { SavingsAccount } from "./SavingsAccount";
 
 export class Bank {
   #id: number = 1;
-  #bills: Map<number, CommonType> = new Map();
+  #bills: Map<number, BankAccount> = new Map();
 
-  addAccount(account: CommonType) {
+  addAccount(account: BankAccount) {
     this.#bills.set(this.#id, account);
     this.#id++;
   }

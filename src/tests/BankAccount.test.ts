@@ -30,4 +30,9 @@ describe("BankAccount", () => {
     const history = bank.getTransactionHistory();
     expect(history).toHaveLength(2);
   });
+
+  it("Getting transaction history with filter", () => {
+    const history = bank.getTransactionHistory("deposit");
+    expect(history.every((el) => el.type === "deposit"));
+  });
 });

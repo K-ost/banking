@@ -51,16 +51,9 @@ export default class BankAccount {
 
   getTransactionHistory(type?: TransactionType): Transaction[] {
     let transactions = Array.from(this.#transactions.values());
-
     if (type) {
       transactions = transactions.filter((el) => el.type === type);
     }
-
-    return transactions.map((transaction) => ({
-      amount: transaction.amount,
-      balanceAfter: transaction.balanceAfter,
-      timestamp: transaction.timestamp,
-      type: transaction.type,
-    }));
+    return transactions;
   }
 }
