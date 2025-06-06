@@ -2,13 +2,6 @@ import { Bank } from "./components/Bank";
 import BankAccount from "./components/BankAccount";
 import { CheckingAccount, SavingsAccount } from "./components/SavingsAccount";
 
-export const enum Messages {
-  insufficient = "Insufficient funds",
-  overdraftExceeded = "Overdraft limit is exceeded",
-  noAccount = "This account doesn't exist",
-  noBothAccounts = "One or both accounts don't exist",
-}
-
 // Stage 1
 const acc = new BankAccount("Alice", 1000);
 acc.deposit(500);

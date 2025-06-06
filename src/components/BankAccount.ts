@@ -1,5 +1,4 @@
-import { Messages } from "..";
-import { Transaction, TransactionType } from "../types";
+import { Messages, Transaction, TransactionType } from "../types";
 
 export default class BankAccount {
   #balance: number;

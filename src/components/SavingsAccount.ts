@@ -1,5 +1,4 @@
-import { Messages } from "..";
-import { WithdrawType } from "../types";
+import { Messages, WithdrawType } from "../types";
 import BankAccount from "./BankAccount";
 
 export class SavingsAccount extends BankAccount {
