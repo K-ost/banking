@@ -3,6 +3,8 @@ export const enum Messages {
   overdraftExceeded = "Overdraft limit is exceeded",
   noAccount = "This account doesn't exist",
   noBothAccounts = "One or both accounts don't exist",
+  noLogged = "Unauthorized access",
+  noSameTransfer = "Cannot transfer to the same account",
 }
 
 export type TransactionType =

@@ -4,7 +4,7 @@
   "description": "Banking App",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "author": "https://github.com/K-ost",
   "license": "ISC",

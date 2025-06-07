@@ -3,29 +3,31 @@ import BankAccount from "./components/BankAccount";
 import { CheckingAccount, SavingsAccount } from "./components/SavingsAccount";
 
 // Stage 1
-const acc = new BankAccount("Alice", 1000);
-acc.deposit(500);
-acc.withdraw(700);
-
-// Stage 2
-const savAcc = new SavingsAccount("Bob", 2000, 0.05);
-savAcc.deposit(100);
-savAcc.addInterest();
-savAcc.withdraw(300);
-
-const checkAcc = new CheckingAccount("Charlie", 500, 300);
-checkAcc.withdraw(700);
-
-// Stage 3
+// Условно: создание банка и аккаунтов
 const bank = new Bank();
-bank.addAccount(acc);
-bank.addAccount(savAcc);
-bank.addAccount(checkAcc);
+const acc1 = new CheckingAccount("User1", 100, 50);
+const acc2 = new SavingsAccount("User2", 200, 0.1);
+bank.addAccount(acc1); // получает ID = 1
+bank.addAccount(acc2); // ID = 2
 
-bank.transfer(3, 1, 100);
-bank.transfer(1, 3, 800);
-bank.transfer(2, 3, 500);
+// ✅ login + deposit
+bank.login(1);
+bank.deposit(1, 50); // OK
 
-console.log("bank accountId 1: ", bank.getAccountHistory(1));
-console.log("bank accountId 2: ", bank.getAccountHistory(2));
-console.log("bank accountId 3: ", bank.getAccountHistory(3));
+// ❌ попытка deposit на чужой аккаунт
+bank.deposit(2, 50); // Error: Unauthorized access
+
+// ❌ операция без login
+bank.logout();
+bank.withdraw(1, 50); // Error: Unauthorized access
+
+// ✅ login + transfer to self
+bank.login(1);
+bank.transfer(1, 1, 30); // OK
+
+// ❌ transfer to чужой аккаунт
+bank.transfer(1, 2, 30); // Error
+
+// ❌ applyInterest без login
+bank.logout();
+bank.applyInterest(2); // Error
